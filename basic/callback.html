@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+  <body></body>
+  <script>
+    function callbackAdd(a, b, callback) {
+      setTimeout(() => {
+        const sum = a + b;
+        callback(sum);
+      }, 1000);
+    }
+
+    function promiseAdd(a, b) {
+      const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const sum = a + b;
+          resolve(sum);
+        }, 2000);
+      });
+      return promise;
+    }
+
+    function promiseMinus(a, b) {
+      return new Promise((resolve, reject) => {
+        const minus = a - b;
+        resolve(minus);
+      });
+    }
+
+    async function asyncAdd() {
+      return {
+        name: 'kim',
+      };
+    }
+
+    async function getAsyncAdd() {
+      const result = asyncAdd();
+      console.log('getAsyncAdd', result);
+    }
+
+    function minus(a, b) {
+      const result = a - b;
+      console.log(result);
+      return result;
+    }
+
+    console.log('before async');
+
+    callbackAdd(2, 5, (value) => {
+      console.log('callbackAdd', value);
+      callbackAdd(value, 6, (value) => {
+        console.log('callbackAdd', value);
+      });
+    });
+
+    promiseAdd(2, 4).then((value) => {
+      console.log('promiseAdd', value);
+    });
+
+    minus(5, 4);
+
+    promiseMinus(5, 3).then((value) => {
+      console.log('promiseMinus', value);
+    });
+
+    getAsyncAdd(10, 11);
+
+    console.log('after async');
+  </script>
+</html>

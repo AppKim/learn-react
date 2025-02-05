@@ -1,0 +1,34 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.editor .dateSeciton > input,
+textarea {
+  background-color: rgb(236, 236, 236);
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px 20px;
+}
+
+.emotionWrapper {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.editor .contentSection > textarea {
+  padding: 20px;
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.editor .buttonSection {
+  display: flex;
+  justify-content: space-between;
+}

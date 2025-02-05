@@ -1,0 +1,26 @@
+.Todoitem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.Todoitem > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.Todoitem .date {
+  font-size: 14px;
+  color: gray;
+}
+
+.Todoitem .right > button {
+  cursor: pointer;
+  font-size: 14px;
+  color: gray;
+  background-color: rgb(220, 220, 220);
+  border: none;
+  border-radius: 5px;
+}

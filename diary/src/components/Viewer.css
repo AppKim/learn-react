@@ -1,0 +1,66 @@
+.viewer > section {
+  width: 100%;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.viewer > section > h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.viewer .emotionImageWrapper {
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  color: white;
+  font-size: 25px;
+}
+
+.viewer .emotionImageWrapper1 {
+  color: white;
+  background-color: rgb(100, 201, 100);
+}
+.viewer .emotionImageWrapper2 {
+  color: white;
+  background-color: rgb(157, 215, 114);
+}
+.viewer .emotionImageWrapper3 {
+  color: white;
+  background-color: rgb(253, 206, 23);
+}
+.viewer .emotionImageWrapper4 {
+  color: white;
+  background-color: rgb(253, 132, 70);
+}
+.viewer .emotionImageWrapper5 {
+  color: white;
+  background-color: rgb(253, 86, 95);
+}
+
+.viewer .contentWrapper {
+  width: 100%;
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  margin-bottom: 10px;
+}
+
+.viewer .contentWrapper > p {
+  padding: 20px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 2.5;
+}
