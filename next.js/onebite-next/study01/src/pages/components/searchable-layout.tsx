@@ -7,17 +7,21 @@ export default function SearchableLayout({
 }: {
   children: ReactNode;
 }) {
-  const [searchKeyword, setSearchKeyrod] = useState("");
+  const [searchKeyword, setSearchKeword] = useState("");
   const router = useRouter();
   const q = router.query.q as string;
+
   useEffect(() => {
-    setSearchKeyrod(q);
+    setSearchKeword(q);
   }, [q]);
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchKeyrod(e.target.value);
+    setSearchKeword(e.target.value);
   };
   const onSubmit = () => {
-    if (!searchKeyword || q === searchKeyword) return;
+    if (q === searchKeyword) return;
+    if (!searchKeyword) {
+      setSearchKeword("");
+    }
     router.push(`/search?q=${searchKeyword}`);
   };
   const onKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -31,7 +35,7 @@ export default function SearchableLayout({
         <input
           type="text"
           placeholder="Input Keyword..."
-          value={searchKeyword}
+          value={searchKeyword || ""}
           onChange={onChangeSearch}
           onKeyDown={onKeydown}
         />

@@ -2,21 +2,39 @@
 import { ReactNode } from "react";
 import SearchableLayout from "./components/searchable-layout";
 import style from "./index.module.css";
-import books from "@/mock/books.json";
 import BookItem from "./components/book-item";
+import { InferGetServerSidePropsType } from "next";
+import fetchBooks from "@/lib/fetch-books";
+import fetchRecommendBooks from "@/lib/fetch-recommend-books";
 
-export default function Home() {
+export const getServerSideProps = async () => {
+  const [allBooks, recommendBooks] = await Promise.all([
+    fetchBooks(),
+    fetchRecommendBooks(),
+  ]);
+  return {
+    props: {
+      allBooks,
+      recommendBooks,
+    },
+  };
+};
+
+export default function Home({
+  allBooks,
+  recommendBooks,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className={style.container}>
       <section>
         <h3>Recommend</h3>
-        {books.map((book) => (
+        {recommendBooks.map((book) => (
           <BookItem key={book.id} {...book}></BookItem>
         ))}
       </section>
       <section>
         <h3>All</h3>
-        {books.map((book) => (
+        {allBooks.map((book) => (
           <BookItem key={book.id} {...book}></BookItem>
         ))}
       </section>
