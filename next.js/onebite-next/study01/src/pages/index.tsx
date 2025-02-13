@@ -3,11 +3,13 @@ import { ReactNode } from "react";
 import SearchableLayout from "./components/searchable-layout";
 import style from "./index.module.css";
 import BookItem from "./components/book-item";
-import { InferGetServerSidePropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 import fetchBooks from "@/lib/fetch-books";
 import fetchRecommendBooks from "@/lib/fetch-recommend-books";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
+  console.log("index page");
+
   const [allBooks, recommendBooks] = await Promise.all([
     fetchBooks(),
     fetchRecommendBooks(),
@@ -23,7 +25,7 @@ export const getServerSideProps = async () => {
 export default function Home({
   allBooks,
   recommendBooks,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={style.container}>
       <section>
