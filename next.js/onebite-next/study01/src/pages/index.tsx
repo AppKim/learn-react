@@ -19,6 +19,7 @@ export const getStaticProps = async () => {
       allBooks,
       recommendBooks,
     },
+    revalidate: 3,
   };
 };
 

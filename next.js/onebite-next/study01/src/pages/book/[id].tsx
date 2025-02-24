@@ -32,6 +32,9 @@ export const getStaticPaths = () => {
       },
     ],
     fallback: true,
+    // false: 404 Not Found
+    // blocking: SSR
+    // true: SSR + propsを分けて処理する
   };
 };
 
