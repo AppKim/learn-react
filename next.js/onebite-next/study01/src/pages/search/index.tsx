@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import fetchBooks from "@/lib/fetch-books";
 import BookItem from "../components/book-item";
+import Head from "next/head";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
@@ -21,11 +22,19 @@ export default function Page({
   books,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <div>
-      {books.map((book) => (
-        <BookItem key={book.id} {...book} />
-      ))}
-    </div>
+    <>
+      <Head>
+        <title>Onebite Books - Search Result</title>
+        <meta property="og:image" content="/thumnail.png" />
+        <meta property="og:title" content="Onebite Books - Search Result" />
+        <meta property="og:description" content="" />
+      </Head>
+      <div>
+        {books.map((book) => (
+          <BookItem key={book.id} {...book} />
+        ))}
+      </div>
+    </>
   );
 }
 
