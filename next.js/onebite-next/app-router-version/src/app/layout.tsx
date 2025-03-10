@@ -1,6 +1,21 @@
 import "./globals.css";
 import Link from "next/link";
 import style from "./layout.module.css";
+import { BookData } from "@/types";
+
+async function Footer() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`
+  );
+
+  const bookNum: BookData[] = await response.json();
+  return (
+    <footer>
+      <div>from @junseok</div>
+      <div>Book Count: {bookNum.length}</div>
+    </footer>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -15,7 +30,7 @@ export default function RootLayout({
             <Link href={"/"}>📚 ONEBITE BOOKS</Link>
           </header>
           <main>{children}</main>
-          <footer>from @junseok</footer>
+          <Footer></Footer>
         </div>
       </body>
     </html>
