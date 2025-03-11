@@ -1,14 +1,25 @@
+import { notFound } from "next/navigation";
 import style from "./page.module.css";
+
+// export const dynamicParams = false;
+
+// page router getStaticPath랑 똑같은 역활
+export function generateStaticParams() {
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+}
 
 export default async function Page({
   params,
 }: {
-  params: { id: string | string[] };
+  params: Promise<{ id: string | string[] }>;
 }) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
   );
   if (!response.ok) {
+    if (response.status === 404) {
+      notFound();
+    }
     return <div>occurred error</div>;
   }
   const book = await response.json();
